@@ -269,28 +269,53 @@ class Vista {
     this.canvas.ctx.lineWidth = 6
     this.canvas.ctx.moveTo(campo.anchura / 2 - 5, 0)
     this.canvas.ctx.lineTo(campo.anchura / 2 - 5, campo.altura)
+
     this.canvas.ctx.stroke()
 
-    /*
-    //Línea de centro
-    canvas.ctx.lineWidth = 1
-    canvas.ctx.moveTo(WIDTH/4, HEIGHT/2)
-    canvas.ctx.lineTo(3*WIDTH/4, HEIGHT/2)
 
-    //Líneas de saque
-    canvas.ctx.moveTo(WIDTH/4, 0)
-    canvas.ctx.lineTo(WIDTH/4, HEIGHT)
-    canvas.ctx.moveTo(3*WIDTH/4, 0)
-    canvas.ctx.lineTo(3*WIDTH/4, HEIGHT)
+    this.canvas.ctx.strokeStyle = 'white';
+    this.canvas.ctx.lineWidth = 6;
+    this.canvas.ctx.moveTo( 0,0);
+    this.canvas.ctx.lineTo(campo.anchura,campo.altura);
+    this.canvas.ctx.stroke();
 
-    //Líneas de banda
-    canvas.ctx.moveTo(0, HEIGHT/8)
-    canvas.ctx.lineTo(WIDTH, HEIGHT/8)
-    canvas.ctx.moveTo(0, 7*HEIGHT/8)
-    canvas.ctx.lineTo(WIDTH, 7*HEIGHT/8)
 
-    canvas.ctx.stroke()
-    */
+      this.canvas.ctx.strokeStyle = 'white';
+      this.canvas.ctx.lineWidth = 6;
+      this.canvas.ctx.moveTo( campo.anchura,0);
+      this.canvas.ctx.lineTo(0,campo.altura);
+      this.canvas.ctx.stroke();
+
+
+      this.canvas.ctx.beginPath()
+      this.canvas.ctx.strokeStyle = 'red';
+      this.canvas.ctx.lineWidth = 6;
+      this.canvas.ctx.moveTo( 0,campo.altura/2);
+      this.canvas.ctx.lineTo(campo.anchura,campo.altura/2);
+      this.canvas.ctx.stroke();
+
+
+
+      /*
+      //Línea de centro
+      canvas.ctx.lineWidth = 1
+      canvas.ctx.moveTo(WIDTH/4, HEIGHT/2)
+      canvas.ctx.lineTo(3*WIDTH/4, HEIGHT/2)
+
+      //Líneas de saque
+      canvas.ctx.moveTo(WIDTH/4, 0)
+      canvas.ctx.lineTo(WIDTH/4, HEIGHT)
+      canvas.ctx.moveTo(3*WIDTH/4, 0)
+      canvas.ctx.lineTo(3*WIDTH/4, HEIGHT)
+
+      //Líneas de banda
+      canvas.ctx.moveTo(0, HEIGHT/8)
+      canvas.ctx.lineTo(WIDTH, HEIGHT/8)
+      canvas.ctx.moveTo(0, 7*HEIGHT/8)
+      canvas.ctx.lineTo(WIDTH, 7*HEIGHT/8)
+
+      canvas.ctx.stroke()
+      */
   }
   /**
   	Dibuja la pelota.
@@ -300,7 +325,7 @@ class Vista {
     this.canvas.ctx.beginPath()
     this.canvas.ctx.arc( //cx, cy, radio, start_angle, end_angle
       pelota.posicion[0] - this.pelota.radio,
-      pelota.posicion[1], this.pelota.radio, 0, 2 * Math.PI)
+      pelota.posicion[1], this.pelota.radio, 0, 2*Math.PI )
     this.canvas.ctx.fill()
   }
   /**
@@ -310,7 +335,7 @@ class Vista {
     for (let i = 0; i < 2; i++) {
       this.canvas.ctx.fillStyle = this.jugadores[i].color
       this.canvas.ctx.fillRect(
-        jugadores[i].posicion[0],
+        jugadores[i].posicion[0] - this.jugadores[i].anchura / 2,
         jugadores[i].posicion[1] - this.jugadores[i].altura / 2,
         this.jugadores[i].anchura,
         this.jugadores[i].altura)
